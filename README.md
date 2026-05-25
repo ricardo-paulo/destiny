@@ -2,14 +2,6 @@
 
 Este é um trabalho bimestral proposto na disciplina Estrutura de Dados II, do curso Análise e Desenvolvimento de Sistemas do IFTO - *Campus* Araguaína.
 
-# Contribuintes
-
-- Alexandre William
-- Jackson Alves dos Santos
-- Kamilly Silva
-- Lidia Cruz de Araújo
-- Paulo Ricardo Rodrigues Silva
-
 # Conceito
 
 A princípio, criar uma aplicação CLI utilizando Java que irá calcular qual é a melhor rota entre duas cidades da Região Metropolitana de Gurupi (instituída pela LEI COMPLEMENTAR Nº 172, DE 11 DE FEVEREIRO DE 2026) utilizando conceitos básicos de Grafos.
@@ -17,6 +9,14 @@ A princípio, criar uma aplicação CLI utilizando Java que irá calcular qual �
 # Restrições
 
 Não é permitido o uso de bibliotecas de grafos ou quaisquer outras estruturas de dados prontas para este fim. A única exceção é o uso de ArrayLists (Java).
+
+# Integrantes
+
+- Alexandre William
+- Jackson Alves dos Santos
+- Kamilly Silva
+- Lidia Cruz de Araújo
+- Paulo Ricardo Rodrigues Silva
 
 # Arquitetura (Planejamento)
 
@@ -38,55 +38,50 @@ Não serão necessárias realizar inserções ou qualquer tipo de modificações
 
 # Definições
 
-### Locais de extração de informações
+## Fontes de dados
 
 ### Para trechos em concessão
 
-<aside>
-❗
-Só existem pedágios em trechos concedidos (privatizados).
-
-</aside>
-
-<br>
+> Só existem pedágios em trechos concedidos (privatizados).
+> 
 
 Para checagem de Postos da PRF, Pedágios, acessar em: [https://www.ecoviasaraguaia.com.br/condicoes-da-via](https://www.ecoviasaraguaia.com.br/condicoes-da-via)
 
 Para checagem de trechos em obras, acessar em: [Duplicação da BR-153/GO/TO - EcoRodovias](https://www.ecoviasaraguaia.com.br/servicos/duplicacao-br-153-go-to)
 
-## Lei Complementar nº 172
+### Lei Complementar nº 172
 
 - Nome das cidades.
 
-## Mapa Multimodal do Tocantins - DNIT
+### Mapa Multimodal do Tocantins - DNIT
 
 - Nome das Rodovias;
 - Presença de Asfalto;
 - Postos da PRF; e
 - Tipo de via.
 
-## Wase
+### Wase
 
 - Distância entre cidades; e
 - Presença de buracos.
 
-## OpenStreetMap
+### OpenStreetMap
 
 - Limite de velocidade.
 
-## Mapa de Manutenção Rodoviária
+### Mapa de Manutenção Rodoviária
 
 - Manutenção de Rodovias Federais (BRs).
 
-## Portal de Notícias do AGETO
+### Portal de Notícias do AGETO
 
 - Manutenção de Rodovias Estaduais (TOs).
 
-## Pesquisa CNT de Rodovias
+### Pesquisa CNT de Rodovias
 
 - Estado geral da rodovia.
 
-### Entidades e atributos
+## Entidades e atributos
 
 | Cidade | Rodovia (segmento) |
 | --- | --- |
@@ -102,13 +97,13 @@ Para checagem de trechos em obras, acessar em: [Duplicação da BR-153/GO/TO - E
 |  | velocidade média permitida |
 |  | postos da prf |
 
-### Utilização dos atributos
+## Utilização dos atributos
 
-#### Peso 1 (Distância entre os destinos)
+### Peso 1 (Distância entre os destinos)
 
 - Distância entre vértices.
 
-#### Peso 2 (Tempo de viagem)
+### Peso 2 (Tempo de viagem)
 
 - Distância entre vértices;
 - Presença de asfalto;
@@ -118,25 +113,25 @@ Para checagem de trechos em obras, acessar em: [Duplicação da BR-153/GO/TO - E
 - Está em obras; e
 - Velocidade média permitida.
 
-#### Peso 3 (Custo/Fatores de Risco)
+### Peso 3 (Custo/Fatores de Risco)
 
 - Condição geral.
 
-### Exceções de nomenclatura de rodovias
+## Exceções de nomenclatura das rodovias
 
 Exceções nas nomenclaturas de via ocorreram pois em determinados casos há duas intersecções diferentes com as mesmas vias. A título de exemplo, a BR-242 abaixo, que tem duas intersecções com a TO-181 em dois vértices diferentes (não coincidentes).
 
 Manter uma nomenclatura única para o caso acima causaria duplo entendimento até mesmo a nível de código, mesmo que com IDs separados. Portanto, fez-se necessária a nomenclatura no padrão *_n* onde *n* é um valor numérico da quantidade de intersecções das mesmas vias.
 
-#### BR-242/TO-181
+### BR-242/TO-181
 
 ![Exceção BR-242_TO-181.png](media/Exceo_BR-242_TO-181.png)
 
-#### BR-242/BR-010
+### BR-242/BR-010
 
 ![Exceção BR-242_BR-010.png](media/Exceo_BR-242_BR-010.png)
 
-#### TO-296/TO-050
+### TO-296/TO-050
 
 ![Exceção TO-296_TO-050.png](media/Exceo_TO-296_TO-050.png)
 
