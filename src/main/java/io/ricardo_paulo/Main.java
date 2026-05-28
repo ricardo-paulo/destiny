@@ -1,17 +1,36 @@
 package io.ricardo_paulo;
 
-// TIP Para <b>executar</b> o código, pressione <shortcut actionId="Run"/> ou
-// clique no ícone <icon src="AllIcons.Actions.Execute"/> no gutter.
+import io.ricardo_paulo.CLI.CommandsHandler;
+import picocli.CommandLine;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // TIP Pressione <shortcut actionId="ShowIntentionActions"/> com seu caret no texto destacado
-        // para ver como IntelliJ IDEA sugere corrigi-lo.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            // TIP Pressione <shortcut actionId="Debug"/> para iniciar a depuração do seu código. Definimos um ponto de interrupção <icon src="AllIcons.Debugger.Db_set_breakpoint"/>
-            // para você, mas você sempre pode adicionar mais pressionando <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Olá, bem vindo(a) de volta!");
+        System.out.println("Digite help para obter ajuda com os comandos e suas formas de uso.");
+
+        while (true) {
+
+            CommandsHandler cmdContainer = new CommandsHandler();
+            CommandLine cmd = new CommandLine(cmdContainer);
+
+            System.out.print("\ndestiny-cli>");
+            String rawInput = scanner.nextLine().trim();
+
+            if (rawInput.equalsIgnoreCase("exit")) {
+                System.out.println("Finalizando sessão. Até mais!");
+                break;
+            }
+
+            String[] options = rawInput.split("\\s+(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+            cmd.execute(options);
+
         }
+
+        scanner.close();
+
     }
 }
