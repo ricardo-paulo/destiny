@@ -6,7 +6,7 @@ import picocli.CommandLine.Parameters;
 @Command(
         name = "route",
         mixinStandardHelpOptions = true,
-        version = "route 1.0",
+        version = "route 1.1",
         description = "Traça rotas com base em um grafo de rodovias e cidades."
 )
 public class RouteCommand implements Runnable {
@@ -17,8 +17,11 @@ public class RouteCommand implements Runnable {
     @Parameters(paramLabel = "<destino>", description = "Cidade de Destino.")
     private String destiny;
 
-    @Parameters(paramLabel = "<algoritmo>", description = "Algorítmo usado na busca.")
-    private String algorithm;
+    @Parameters(
+            paramLabel = "<algoritmo>",
+            description = "Algorítmo usado na busca. Disponíveis: ${COMPLETION-CANDIDATES}"
+    )
+    private Algorithm algorithm;
 
     @Override
     public void run () {
