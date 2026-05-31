@@ -3,3 +3,5 @@ inserí-los na classe Graph (Grafo).
 
 Por sua vez, a classe Graph deve estar na pasta Service e irá realizar todas as operações de grafo e retornar uma rota
 completa. Esse retorno será utilizado em RouteCommand.
+
+Além disso, Graph também deve conter uma matriz de adjacência e de incidência.

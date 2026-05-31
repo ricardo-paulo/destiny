@@ -2,5 +2,6 @@ A pasta Data é destinada a abrigar a classe Data (e suas subclasses) responsáv
 do arquivo JSON (que também estará contido nesta pasta) e retornar os dados em forma de um array de objetos
 do tipo Vertex (vértice).
 
-O retorno da leitura, um objeto do tipo DataGetResult que irá conter todos os vértices do arquivo JSON será
-utilizado pela camada Service para criar o objeto do tipo Graph, que irá comportar todos os vértices do grafo.
+O retorno da leitura, um objeto do tipo DataGetResult que irá conter todos os vértices, matrizes de incidência
+e adjacência, do arquivo JSON, será utilizado pela camada Service para criar o objeto do tipo Graph,
+que irá comportar todos os vértices do grafo.
