@@ -18,7 +18,7 @@ Não é permitido o uso de bibliotecas de grafos ou quaisquer outras estruturas 
 - Lidia Cruz de Araújo
 - Paulo Ricardo Rodrigues Silva
 
-# Arquitetura (Planejamento)
+# Arquitetura
 
 A aplicação é composta por três camadas: CLI, Camada de Serviço e Camada de Dados.
 
@@ -65,7 +65,7 @@ Para checagem de trechos em obras, acessar em: [Duplicação da BR-153/GO/TO - E
 - Distância entre cidades; e
 - Presença de buracos.
 
-### OpenStreetMap
+### **Art. 61 da Lei nº 9.503 do Código de Trânsito Brasileiro**
 
 - Limite de velocidade.
 
@@ -83,19 +83,19 @@ Para checagem de trechos em obras, acessar em: [Duplicação da BR-153/GO/TO - E
 
 ## Entidades e atributos
 
-| Cidade | Rodovia (segmento) |
-| --- | --- |
-| id | id |
-| nome | nome |
-|  | condição geral |
-|  | distância entre vértices (cidades) |
-|  | presença de asfalto |
-|  | presença de buracos |
-|  | tipo de via (simples, dupla, etc.) |
-|  | presença de pedágios |
-|  | está em obras |
-|  | velocidade média permitida |
-|  | postos da prf |
+| Cidade | Rodovia (segmento)                 |
+|--------|------------------------------------|
+| id     | id                                 |
+| nome   | nome                               |
+|        | condição geral                     |
+|        | distância entre vértices (cidades) |
+|        | presença de asfalto                |
+|        | presença de buracos                |
+|        | tipo de via (simples, dupla, etc.) |
+|        | presença de pedágios               |
+|        | está em obras                      |
+|        | velocidade média permitida         |
+|        | postos da prf                      |
 
 ## Utilização dos atributos
 
@@ -158,39 +158,68 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
     
     - [x]  Nome e Id das vias;
     - [x]  Nomes e Ids dos vértices (1 e 2);
-    - [ ]  Condição Geral;
+    - [x]  Condição Geral;
     - [ ]  Distância;
-    - [ ]  Pavimentação;
-    - [ ]  Buracos;
-    - [ ]  Pedágios;
-    - [ ]  Postos da PRF;
-    - [ ]  Em obras; e
-    - [ ]  Vel. Média permitida.
+    - [x]  Pavimentação;
+    - [x]  Buracos;
+    - [x]  Pedágios;
+    - [x]  Postos da PRF;
+    - [x]  Em obras; e
+    - [x]  Vel. Média permitida.
     
     ### Cidades (Vértices)
     
     - [x]  Id;
     - [x]  Nome dos vértices.
 - [ ]  Transformar a tabela do Planilhas em um arquivo JSON utilizando o notebook específico do Google Colab.
+    - [ ]  Rodovias (arestas)
+    - [x]  Vértices
+    - [x]  Tabela de Incidência
+    - [x]  Tabela de Adjacência
 
 ## Camada de Dados
 
+- [ ]  Criar classe DataGetResult.
+    - [ ]  Criar atributos para armazenar os objetos Vertex, matrizes de incidência e matrizes de adjacência.
+- [ ]  Criar classe Data.
+    - [ ]  Fazer a classe retornar um objeto do tipo DataGetResult.
+- [ ]  Criar classe Vertex.
+
 ## Camada de Serviço
+
+- [ ]  Criar classe Graph.
+    - [ ]  Fazer a classe retornar um array de Vertex (vértices) na ordem crescente para a rota a ser seguida pelo usuário.
 
 ## CLI
 
+- [x]  Criar comando clear, para limpar o terminal.
+- [x]  Criar comando help.
+- [x]  Criar classe RouteFormatter para formatar o resultado de uma rota.
+    - [x]  Criar método para formatar e retornar uma saída de dados de acordo com o modelo.
+    - [x]  Criar método para retornar um separador para a próxima saída de dados.
+    - [x]  Criar método para inserir avisos (se há buracos e se está em obra) na saída.
+- [ ]  Criar comando route.
+    - [ ]  Incluir tratamento de erro para o caso de parâmetros inválidos.
+
 # Extras
 
+- [ ]  Criar comando para listar: rodovias, cidades, tabela de incidência e tabela de adjacência.
 - [ ]  Incluir as tarifas de pedágios para o índice de degradação (custo) para uso da via.
 - [ ]  Criar formas de inserir, atualizar ou deletar cidades e rodovias.
+
+# Bibliotecas
+
+- Picocli (Java) - Utilizada para melhor estruturação e apresentação dos comandos. (Site oficial: [picocli - a mighty tiny command line interface](https://picocli.info/))
 
 # Referências e Fontes de Dados
 
 - Mapa Multimodal do Tocantins - DNIT (Disponível em: [https://www.gov.br/dnit/pt-br/assuntos/planejamento-e-pesquisa/dnit-geo/mapas-multimodais/mapas-2025/to.pdf/](https://www.gov.br/dnit/pt-br/assuntos/planejamento-e-pesquisa/dnit-geo/mapas-multimodais/mapas-2025/to.pdf/))
 - Lei Complementar Nº 172, de 11 de Fevereiro de 2026 (Disponível em: [lei_172-2026_79220.PDF](https://www.al.to.leg.br/arquivos/lei_172-2026_79220.PDF))
 - Wase (Disponível em: [https://www.waze.com/](https://www.waze.com/))
+- Google Maps (Disponível em: [Google Maps](https://www.google.com.br/maps))
 - Pesquisa CNT de Rodovias (Disponível em: [Pesquisa CNT de Rodovias](https://pesquisarodovias.cnt.org.br/mapa))
 - Mapa de Manutenção - DNIT (Disponível em: [https://www.gov.br/dnit/pt-br/rodovias/mapa-de-gerenciamento/mapas-de-manutencao-fevereiro-2026](https://www.gov.br/dnit/pt-br/rodovias/mapa-de-gerenciamento/mapas-de-manutencao-fevereiro-2026))
 - Portal de Notícias AGETO (Disponível em: [Notícias - Agência de Transportes, Obras e Infraestrutura - AGETO-TO](https://www.to.gov.br/ageto/noticias/data/2026/))
 - Ecovias Araguaia - Condições da Via (Disponível em: [https://www.ecoviasaraguaia.com.br/condicoes-da-via](https://www.ecoviasaraguaia.com.br/condicoes-da-via))
-- OpenStreetMap (Disponível em: [https://www.openstreetmap.org/](https://www.openstreetmap.org/))
+- Ecovias Araguaia - Duplicação da BR-153/TO/GO (Disponível em: [https://www.ecoviasaraguaia.com.br/servicos/duplicacao-br-153-go-to](https://www.ecoviasaraguaia.com.br/servicos/duplicacao-br-153-go-to))
+- Art. 61 da Lei nº 9.503 do Código de Trânsito Brasileiro, de 23 de setembro de 1997 (Disponível em: [Art. 61 do Código de Trânsito Brasileiro - Lei 9503/97 | Jusbrasil](https://www.jusbrasil.com.br/topicos/10620236/artigo-61-da-lei-n-9503-de-23-de-setembro-de-1997))
