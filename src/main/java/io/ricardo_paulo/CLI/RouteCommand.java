@@ -1,8 +1,8 @@
 package io.ricardo_paulo.CLI;
 
-import io.ricardo_paulo.CLI.util.Algorithm;
-import io.ricardo_paulo.CLI.util.InputNormalizer;
-import io.ricardo_paulo.CLI.util.Priority;
+import io.ricardo_paulo.enums.Algorithm;
+import io.ricardo_paulo.enums.RouteCriteria;
+import io.ricardo_paulo.util.InputNormalizer;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
@@ -27,10 +27,10 @@ public class RouteCommand implements Runnable {
     private Algorithm algorithm;
 
     @Parameters(
-            paramLabel = "<priority>",
+            paramLabel = "<routeCriteria>",
             description = "A prioridade usada para calcular a melhor rota. Disponíveis: ${COMPLETION-CANDIDATES}"
     )
-    private Priority priority;
+    private RouteCriteria routeCriteria;
 
     @Override
     public void run () {
@@ -44,7 +44,7 @@ public class RouteCommand implements Runnable {
             System.out.println("O destino passado por parâmetro é inválido!");
         } else {
             System.out.printf("Calculando rota: %s -> %s\n", origin, destiny);
-            System.out.printf("Considerando como prioridade: %s\n", priority);
+            System.out.printf("Considerando como prioridade: %s\n", routeCriteria);
         }
 
     }
