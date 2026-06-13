@@ -1,5 +1,8 @@
 package io.ricardo_paulo.CLI;
 
+import io.ricardo_paulo.CLI.util.Algorithm;
+import io.ricardo_paulo.CLI.util.InputNormalizer;
+import io.ricardo_paulo.CLI.util.Priority;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
@@ -14,7 +17,7 @@ public class RouteCommand implements Runnable {
     @Parameters(paramLabel = "<origem>", description = "Cidade de origem.")
     private String origin;
 
-    @Parameters(paramLabel = "<destino>", description = "Cidade de Destino.")
+    @Parameters(paramLabel = "<destino>", description = "Cidade de destino.")
     private String destiny;
 
     @Parameters(
@@ -31,8 +34,26 @@ public class RouteCommand implements Runnable {
 
     @Override
     public void run () {
-        System.out.printf("Calculando rota: %s -> %s\n", origin, destiny);
-        System.out.printf("Considerando como prioridade: %s\n", priority);
+
+        String noAccentOrigin = new InputNormalizer(origin).getNormalized();
+        String noAccentDestiny = new InputNormalizer(destiny).getNormalized();
+
+        if (!isValidInput(noAccentOrigin)) {
+            System.out.println("A origem passada por parâmetro é inválida!");
+        } else if (!isValidInput(noAccentDestiny)) {
+            System.out.println("O destino passado por parâmetro é inválido!");
+        } else {
+            System.out.printf("Calculando rota: %s -> %s\n", origin, destiny);
+            System.out.printf("Considerando como prioridade: %s\n", priority);
+        }
+
+    }
+
+    private boolean isValidInput (String noAccentInput) {
+        boolean isNumber = noAccentInput.chars().allMatch(Character::isDigit);
+        boolean isText = noAccentInput.chars().allMatch(Character::isAlphabetic);
+
+        return isNumber || isText;
     }
 
 }
