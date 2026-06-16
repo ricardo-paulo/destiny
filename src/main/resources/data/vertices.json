@@ -1,362 +1,362 @@
 [
     {
-        "vertexId": "1",
+        "vertexId": "0",
         "vertexName": "Aliança do Tocantins"
     },
     {
-        "vertexId": "2",
+        "vertexId": "1",
         "vertexName": "Almas"
     },
     {
-        "vertexId": "3",
+        "vertexId": "2",
         "vertexName": "Alvorada"
     },
     {
-        "vertexId": "4",
+        "vertexId": "3",
         "vertexName": "Araguaçu"
     },
     {
-        "vertexId": "5",
+        "vertexId": "4",
         "vertexName": "Arraias"
     },
     {
-        "vertexId": "6",
+        "vertexId": "5",
         "vertexName": "Aurora do Tocantins"
     },
     {
-        "vertexId": "7",
+        "vertexId": "6",
         "vertexName": "Cariri do Tocantins"
     },
     {
-        "vertexId": "8",
+        "vertexId": "7",
         "vertexName": "Chapada da Natividade"
     },
     {
-        "vertexId": "9",
+        "vertexId": "8",
         "vertexName": "Combinado"
     },
     {
-        "vertexId": "10",
+        "vertexId": "9",
         "vertexName": "Conceição do Tocantins"
     },
     {
-        "vertexId": "11",
+        "vertexId": "10",
         "vertexName": "Crixás do Tocantins"
     },
     {
-        "vertexId": "12",
+        "vertexId": "11",
         "vertexName": "Dianópolis"
     },
     {
-        "vertexId": "13",
+        "vertexId": "12",
         "vertexName": "Dueré"
     },
     {
-        "vertexId": "14",
+        "vertexId": "13",
         "vertexName": "Figueirópolis"
     },
     {
-        "vertexId": "15",
+        "vertexId": "14",
         "vertexName": "Formoso do Araguaia"
     },
     {
-        "vertexId": "16",
+        "vertexId": "15",
         "vertexName": "Gurupi"
     },
     {
-        "vertexId": "17",
+        "vertexId": "16",
         "vertexName": "Jaú do Tocantins"
     },
     {
-        "vertexId": "18",
+        "vertexId": "17",
         "vertexName": "Lavandeira"
     },
     {
-        "vertexId": "19",
+        "vertexId": "18",
         "vertexName": "Natividade"
     },
     {
-        "vertexId": "20",
+        "vertexId": "19",
         "vertexName": "Novo Alegre"
     },
     {
-        "vertexId": "21",
+        "vertexId": "20",
         "vertexName": "Novo Jardim"
     },
     {
-        "vertexId": "22",
+        "vertexId": "21",
         "vertexName": "Palmeirópolis"
     },
     {
-        "vertexId": "23",
+        "vertexId": "22",
         "vertexName": "Paranã"
     },
     {
-        "vertexId": "24",
+        "vertexId": "23",
         "vertexName": "Peixe"
     },
     {
-        "vertexId": "25",
+        "vertexId": "24",
         "vertexName": "Ponte Alta do Bom Jesus"
     },
     {
-        "vertexId": "26",
+        "vertexId": "25",
         "vertexName": "Porto Alegre do Tocantins"
     },
     {
-        "vertexId": "27",
+        "vertexId": "26",
         "vertexName": "Rio da Conceição"
     },
     {
-        "vertexId": "28",
+        "vertexId": "27",
         "vertexName": "Sandolândia"
     },
     {
-        "vertexId": "29",
+        "vertexId": "28",
         "vertexName": "Santa Rita do Tocantins"
     },
     {
-        "vertexId": "30",
+        "vertexId": "29",
         "vertexName": "Santa Rosa do Tocantins"
     },
     {
-        "vertexId": "31",
+        "vertexId": "30",
         "vertexName": "São Salvador do Tocantins"
     },
     {
-        "vertexId": "32",
+        "vertexId": "31",
         "vertexName": "São Valério da Natividade"
     },
     {
-        "vertexId": "33",
+        "vertexId": "32",
         "vertexName": "Sucupira"
     },
     {
-        "vertexId": "34",
+        "vertexId": "33",
         "vertexName": "Taguatinga"
     },
     {
-        "vertexId": "35",
+        "vertexId": "34",
         "vertexName": "Taipas do Tocantins"
     },
     {
-        "vertexId": "36",
+        "vertexId": "35",
         "vertexName": "Talismã"
     },
     {
-        "vertexId": "37",
+        "vertexId": "36",
         "vertexName": "BR-153/BR-242"
     },
     {
-        "vertexId": "38",
+        "vertexId": "37",
         "vertexName": "BR-242/TO-181_1"
     },
     {
-        "vertexId": "39",
+        "vertexId": "38",
         "vertexName": "TO-481/TO-181"
     },
     {
-        "vertexId": "40",
+        "vertexId": "39",
         "vertexName": "TO-070/TO-374"
     },
     {
-        "vertexId": "41",
+        "vertexId": "40",
         "vertexName": "BR-153/TO-365"
     },
     {
-        "vertexId": "42",
+        "vertexId": "41",
         "vertexName": "BR-242/TO-460"
     },
     {
-        "vertexId": "43",
+        "vertexId": "42",
         "vertexName": "BR-153/TO-483"
     },
     {
-        "vertexId": "44",
+        "vertexId": "43",
         "vertexName": "TO-483/TO-460"
     },
     {
-        "vertexId": "45",
+        "vertexId": "44",
         "vertexName": "TO-483/BR-242"
     },
     {
-        "vertexId": "46",
+        "vertexId": "45",
         "vertexName": "BR-242/TO-373"
     },
     {
-        "vertexId": "47",
+        "vertexId": "46",
         "vertexName": "BR-242/TO-491"
     },
     {
-        "vertexId": "48",
+        "vertexId": "47",
         "vertexName": "BR-242/TO-280"
     },
     {
-        "vertexId": "49",
+        "vertexId": "48",
         "vertexName": "BR-242/TO-490"
     },
     {
-        "vertexId": "50",
+        "vertexId": "49",
         "vertexName": "BR-242/BR-010_1"
     },
     {
-        "vertexId": "51",
+        "vertexId": "50",
         "vertexName": "TO-280/TO-479"
     },
     {
-        "vertexId": "52",
+        "vertexId": "51",
         "vertexName": "TO-479/TO-373"
     },
     {
-        "vertexId": "53",
+        "vertexId": "52",
         "vertexName": "TO-373/TO-280"
     },
     {
-        "vertexId": "54",
+        "vertexId": "53",
         "vertexName": "TO-373/TO-365"
     },
     {
-        "vertexId": "55",
+        "vertexId": "54",
         "vertexName": "TO-280/TO-490"
     },
     {
-        "vertexId": "56",
+        "vertexId": "55",
         "vertexName": "TO-280/TO-482"
     },
     {
-        "vertexId": "57",
+        "vertexId": "56",
         "vertexName": "TO-482/TO-458"
     },
     {
-        "vertexId": "58",
+        "vertexId": "57",
         "vertexName": "TO-458/BR-010"
     },
     {
-        "vertexId": "59",
+        "vertexId": "58",
         "vertexName": "TO-280/TO-486"
     },
     {
-        "vertexId": "60",
+        "vertexId": "59",
         "vertexName": "BR-010/TO-280"
     },
     {
-        "vertexId": "61",
+        "vertexId": "60",
         "vertexName": "TO-477/BR-010"
     },
     {
-        "vertexId": "62",
+        "vertexId": "61",
         "vertexName": "BR-010/TO-050"
     },
     {
-        "vertexId": "63",
+        "vertexId": "62",
         "vertexName": "BR-010/TO-387"
     },
     {
-        "vertexId": "64",
+        "vertexId": "63",
         "vertexName": "TO-387/TO-050"
     },
     {
-        "vertexId": "65",
+        "vertexId": "64",
         "vertexName": "TO-387/TO-280"
     },
     {
-        "vertexId": "66",
+        "vertexId": "65",
         "vertexName": "TO-477/TO-476"
     },
     {
-        "vertexId": "67",
+        "vertexId": "66",
         "vertexName": "TO-280/TO-110"
     },
     {
-        "vertexId": "68",
+        "vertexId": "67",
         "vertexName": "TO-110/TO-460"
     },
     {
-        "vertexId": "69",
+        "vertexId": "68",
         "vertexName": "TO-110/TO-485"
     },
     {
-        "vertexId": "70",
+        "vertexId": "69",
         "vertexName": "TO-485/TO-487"
     },
     {
-        "vertexId": "71",
+        "vertexId": "70",
         "vertexName": "TO-487/BR-242"
     },
     {
-        "vertexId": "72",
+        "vertexId": "71",
         "vertexName": "TO-110/BR-242"
     },
     {
-        "vertexId": "73",
+        "vertexId": "72",
         "vertexName": "BR-242/TO-296"
     },
     {
-        "vertexId": "74",
+        "vertexId": "73",
         "vertexName": "BR-242/TO-050"
     },
     {
-        "vertexId": "75",
+        "vertexId": "74",
         "vertexName": "BR-242/BR-010_2"
     },
     {
-        "vertexId": "76",
+        "vertexId": "75",
         "vertexName": "BR-242/TO-487"
     },
     {
-        "vertexId": "77",
+        "vertexId": "76",
         "vertexName": "BR-242/TO-497"
     },
     {
-        "vertexId": "78",
+        "vertexId": "77",
         "vertexName": "TO-296/TO-497"
     },
     {
-        "vertexId": "79",
+        "vertexId": "78",
         "vertexName": "TO-296/TO-050_1"
     },
     {
-        "vertexId": "80",
+        "vertexId": "79",
         "vertexName": "TO-296/TO-050_2"
     },
     {
-        "vertexId": "81",
+        "vertexId": "80",
         "vertexName": "TO-050/TO-499"
     },
     {
-        "vertexId": "82",
+        "vertexId": "81",
         "vertexName": "TO-387/TO-296"
     },
     {
-        "vertexId": "83",
+        "vertexId": "82",
         "vertexName": "TO-296/TO-491"
     },
     {
-        "vertexId": "84",
+        "vertexId": "83",
         "vertexName": "TO-142/TO-498"
     },
     {
-        "vertexId": "85",
+        "vertexId": "84",
         "vertexName": "TO-498/TO-296"
     },
     {
-        "vertexId": "86",
+        "vertexId": "85",
         "vertexName": "TO-498/TO-373"
     },
     {
-        "vertexId": "87",
+        "vertexId": "86",
         "vertexName": "TO-296/TO-495"
     },
     {
-        "vertexId": "88",
+        "vertexId": "87",
         "vertexName": "TO-373/TO-181"
     },
     {
-        "vertexId": "89",
+        "vertexId": "88",
         "vertexName": "TO-181/TO-070"
     },
     {
-        "vertexId": "90",
+        "vertexId": "89",
         "vertexName": "BR-242/TO-181_2"
     }
 ]

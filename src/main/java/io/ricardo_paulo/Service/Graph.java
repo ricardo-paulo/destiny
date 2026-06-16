@@ -43,7 +43,7 @@ public class Graph {
 
         int numVertices = dataLayer.getData().getVertices().length;
 
-        if (sourceId < 1 || sourceId > 90 || destinationId < 1 || destinationId > 90)
+        if (sourceId < 0 || sourceId > 89 || destinationId < 0 || destinationId > 89)
             return new RouteResult();
 
         return switch (algorithm) {
