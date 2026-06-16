@@ -100,6 +100,9 @@ public class RouteCommand implements Runnable {
             );
         }
 
+        if (nameSets.isEmpty())
+            System.out.println(RouteFormatter.getNonExistent());
+
         for (int i = 0; i < routeEdges.length; i++) {
 
             RouteFormatter routeFormatter = getRouteFormatter(nameSets, i, routeEdges);

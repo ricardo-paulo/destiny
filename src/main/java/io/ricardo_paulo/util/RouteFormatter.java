@@ -61,13 +61,24 @@ public class RouteFormatter {
                  | PARA: %-25.25s| PEDÁGIOS: %11d |
                  |--------------------------------------------------------|
                  | AVISOS: %-47.47s|
-                 '--------------------------------------------------------'
-                """;
+                 '--------------------------------------------------------'""";
 
         if (warnings.isBlank())
             warnings = "Sem avisos.";
 
         return model.formatted(from, distance, highway, maxVel, to, tolls, warnings);
+    }
+
+    public static String getNonExistent() {
+
+        return """
+                
+                 .--------------------------------------------------------.
+                 |                   A ROTA NÃO EXISTE!                   |
+                 |                                                        |
+                 |           Verifique se as cidades inseridas            |
+                 |             foram digitadas corretamente.              |
+                 '--------------------------------------------------------'""";
     }
 
 }
