@@ -9,13 +9,17 @@ public class RouteResult {
     private Graph graph;
     private ArrayList<Integer> pathIds = new ArrayList<>();
     private double totalCost = -1;
-    private RouteCriteria criteriaUsed;
+    private RouteCriteria criteriaUsed = null;
 
     public ArrayList<Integer> getPathIds() {
         return pathIds;
     }
 
     public Edge[] getEdges() {
+
+        if (!routeExists())
+            return new Edge[0];
+
         Edge[] result = new Edge[pathIds.size() - 1];
 
         for (int i = 1; i < pathIds.size(); i++) {
@@ -48,6 +52,10 @@ public class RouteResult {
 
     protected void setGraph(Graph graph) {
         this.graph = graph;
+    }
+
+    public boolean routeExists() {
+        return !pathIds.isEmpty() && !(totalCost == -1) && criteriaUsed != null;
     }
 
 }

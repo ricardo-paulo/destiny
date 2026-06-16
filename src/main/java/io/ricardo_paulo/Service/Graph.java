@@ -26,6 +26,7 @@ package io.ricardo_paulo.Service;
 
 import io.ricardo_paulo.Data.Data;
 import io.ricardo_paulo.Data.Edge;
+import io.ricardo_paulo.Data.Vertex;
 import io.ricardo_paulo.enums.Algorithm;
 import io.ricardo_paulo.enums.RouteCriteria;
 
@@ -42,12 +43,42 @@ public class Graph {
 
         int numVertices = dataLayer.getData().getVertices().length;
 
+        if (sourceId < 1 || sourceId > 90 || destinationId < 1 || destinationId > 90)
+            return new RouteResult();
+
         return switch (algorithm) {
             case DIJKSTRA -> new DijkstraService(this, numVertices)
                     .run(sourceId, destinationId, criteria);
             case BELLMAN_FORD -> new BellmanFordService(this, numVertices)
                     .run(sourceId, destinationId, criteria);
         };
+    }
+
+    public RouteResult calculateBestRoute(
+            String sourceName,
+            String destinationName,
+            Algorithm algorithm,
+            RouteCriteria criteria
+    ) {
+        Vertex[] vertices = dataLayer.getData().getVertices();
+        Vertex resultSource = null;
+        Vertex resultDestination = null;
+
+        for (Vertex vertex : vertices) {
+            if (vertex.getName().equalsIgnoreCase(sourceName)) {
+                resultSource = vertex;
+            }
+
+            if (vertex.getName().equalsIgnoreCase(destinationName)) {
+                resultDestination = vertex;
+            }
+        }
+
+        if (resultSource != null && resultDestination != null) {
+            return calculateBestRoute(resultSource.getId(), resultDestination.getId(), algorithm, criteria);
+        }
+
+        return new RouteResult();
     }
 
     public double getEdgeWeight(int source, int destination, RouteCriteria criteria) {

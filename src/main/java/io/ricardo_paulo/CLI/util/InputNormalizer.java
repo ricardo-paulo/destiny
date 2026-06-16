@@ -11,6 +11,7 @@ public class InputNormalizer {
         this.originalStr = originalStr;
     }
 
+    // Apenas retira todos os acentos do texto.
     public String getNormalized () {
 
         if (Normalizer.isNormalized(originalStr, Normalizer.Form.NFKD))
