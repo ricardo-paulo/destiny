@@ -1,11 +1,9 @@
 package io.ricardo_paulo.Service;
 
 import io.ricardo_paulo.enums.RouteCriteria;
-
 import java.util.ArrayList;
-import java.util.List;
 
-public class BellmanFordService {
+class BellmanFordService {
 
     private final Graph graph;
     private final int numVertices;
@@ -14,7 +12,8 @@ public class BellmanFordService {
         this.graph = graph;
         this.numVertices = numVertices;
     }
-    // metodo que encontra a melhor rota com base no critério escolhido
+
+    // Método que encontra a melhor rota com base no critério escolhido
     public RouteResult run(int source, int destination, RouteCriteria criteria) {
         double[] distances = new double[numVertices];
         int[] predecessor = new int[numVertices];
@@ -52,11 +51,13 @@ public class BellmanFordService {
         }
         result.setTotalCost(distances[destination]);
         result.setPathIds(buildPath(predecessor, source, destination));
+        result.setGraph(graph);
         return result;
     }
-    // Recontroi o caminho
-    private List<Integer> buildPath( int[] predecessor, int source, int destination) {
-        List<Integer> path = new ArrayList<>();
+
+    // Reconstrói o caminho
+    private ArrayList<Integer> buildPath( int[] predecessor, int source, int destination) {
+        ArrayList<Integer> path = new ArrayList<>();
         for (int at = destination; at != -1; at = predecessor[at]) {
             path.add(0, at);
             if (at == source) {

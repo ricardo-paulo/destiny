@@ -1,4 +1,4 @@
-package io.ricardo_paulo.CLI;
+package io.ricardo_paulo.CLI.util;
 
 public class RouteFormatter {
 
@@ -9,6 +9,7 @@ public class RouteFormatter {
 
     private String from;
     private String to;
+    // TODO Incluir os avisos de acordo com o que receber do Grafo.
     private String warnings;
     private float distance;
     private int tolls;

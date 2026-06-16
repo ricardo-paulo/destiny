@@ -1,8 +1,9 @@
 package io.ricardo_paulo.CLI;
 
+import io.ricardo_paulo.Main;
 import io.ricardo_paulo.enums.Algorithm;
 import io.ricardo_paulo.enums.RouteCriteria;
-import io.ricardo_paulo.util.InputNormalizer;
+import io.ricardo_paulo.CLI.util.InputNormalizer;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
@@ -40,12 +41,16 @@ public class RouteCommand implements Runnable {
 
         if (!isValidInput(noAccentOrigin)) {
             System.out.println("A origem passada por parâmetro é inválida!");
+            return;
         } else if (!isValidInput(noAccentDestiny)) {
             System.out.println("O destino passado por parâmetro é inválido!");
-        } else {
-            System.out.printf("Calculando rota: %s -> %s\n", origin, destiny);
-            System.out.printf("Considerando como prioridade: %s\n", routeCriteria);
+            return;
         }
+
+        System.out.printf("Calculando rota: %s -> %s\n", origin, destiny);
+        System.out.printf("Considerando como prioridade: %s\n", routeCriteria);
+
+        // Main.graph.calculateBestRoute(noAccentOrigin, noAccentDestiny, algorithm, routeCriteria);
 
     }
 

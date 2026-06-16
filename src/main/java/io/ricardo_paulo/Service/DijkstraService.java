@@ -1,11 +1,9 @@
 package io.ricardo_paulo.Service;
 
 import io.ricardo_paulo.enums.RouteCriteria;
-
 import java.util.ArrayList;
-import java.util.List;
 
-public class DijkstraService {
+class DijkstraService {
 
     private final Graph graph;
     private final int numVertices;
@@ -15,7 +13,7 @@ public class DijkstraService {
         this.numVertices = numVertices;
     }
 
-    // metodo onde encontra a melhor rota com base no critério escolhido
+    // Método onde encontra a melhor rota com base no critério escolhido
     public RouteResult run(int source, int destination, RouteCriteria criteria) {
         double[] distances = new double[numVertices];
         int[] predecessor = new int[numVertices];
@@ -63,13 +61,14 @@ public class DijkstraService {
         }
         result.setTotalCost(distances[destination]);
 
-        result.setPathIds(buildPath (predecessor, source, destination));
+        result.setPathIds(buildPath(predecessor, source, destination));
+        result.setGraph(graph);
         return result;
     }
 
     //Aqui vai apenas reconstruir o caminho
-    private List<Integer> buildPath(int[] predecessor, int source, int destination) {
-        List<Integer> path = new ArrayList<>();
+    private ArrayList<Integer> buildPath(int[] predecessor, int source, int destination) {
+        ArrayList<Integer> path = new ArrayList<>();
 
         for (int at = destination; at != -1; at = predecessor[at]) {
             path.add(0, at);

@@ -24,73 +24,84 @@ package io.ricardo_paulo.Service;
 // o método EdgeWeight é o mais importante:
 // quando ele executa o Dij e o BEll eles precisam saber qual o peso
 
+import io.ricardo_paulo.Data.Data;
+import io.ricardo_paulo.Data.Edge;
 import io.ricardo_paulo.enums.Algorithm;
 import io.ricardo_paulo.enums.RouteCriteria;
 
 public class Graph {
 
-    private DataLayer dataLayer;
+    private final Data dataLayer = new Data();
 
-    public Graph(DataLayer dataLayer) {
-        this.dataLayer = dataLayer;
-    }
-
+    // TODO Implementar forma de converter a entrada dos parâmetros em caso de receber strings com os nomes das cidades.
     public RouteResult calculateBestRoute(
             int sourceId,
             int destinationId,
             Algorithm algorithm,
             RouteCriteria criteria) {
 
-        int numVertices = dataLayer.getVertices().length;
-        switch (algorithm) {
-            case DIJKSTRA:
-                return new DijkstraService(this, numVertices)
-                        .run(sourceId, destinationId, criteria);
-            case BELLMAN_FORD:
-                return new BellmanFordService(this, numVertices)
-                        .run(sourceId, destinationId, criteria);
-            default:
-                throw new IllegalArgumentException("Unsupported algorithm.");
-        }
+        int numVertices = dataLayer.getData().getVertices().length;
+
+        return switch (algorithm) {
+            case DIJKSTRA -> new DijkstraService(this, numVertices)
+                    .run(sourceId, destinationId, criteria);
+            case BELLMAN_FORD -> new BellmanFordService(this, numVertices)
+                    .run(sourceId, destinationId, criteria);
+        };
     }
 
-    public double getEdgeWeight(
-            int source,
-            int destination,
-            RouteCriteria criteria) {
-        Rodovia road =
-                dataLayer.getMatrizAdjacencia()[source][destination];
-        if (road == null) {
+    public double getEdgeWeight(int source, int destination, RouteCriteria criteria) {
+
+        int vertexAdjacency = dataLayer.getData().getAdjacencyMatrix()[source][destination];
+
+        if (vertexAdjacency == 0) {
             return Double.MAX_VALUE;
         }
-        double distance =
-                Double.parseDouble(
-                        road.getDistance().replace(",", "."));
-        double speed =
-                Double.parseDouble(
-                        road.getAvgPermittedSpeed());
-        switch (criteria) {
-            case SHORTEST_DISTANCE:
-                return distance;
-            case FASTEST_TIME:
+
+        Edge incidentRoad = getIncidentEdge(source, destination);
+
+        double distance = incidentRoad.getDistance();
+        int speed = incidentRoad.getAvgPermittedSpeed();
+
+        return switch (criteria) {
+            case SHORTEST_DISTANCE -> distance;
+            case FASTEST_TIME -> {
                 if (speed <= 0) {
-                    return Double.MAX_VALUE;
+                    yield Double.MAX_VALUE;
                 }
-                return distance / speed;
-            case BEST_QUALITY:
+                yield distance / speed;
+            }
+            case BEST_QUALITY -> {
                 double qualityFactor =
-                        getConditionMultiplier(
-                                road.getGeneralCondition());
-                return distance * qualityFactor;
-            default:
-                return distance;
+                        getConditionMultiplier(incidentRoad.getGeneralCondition());
+                yield distance * qualityFactor;
+            }
+        };
+    }
+
+    protected Edge getIncidentEdge(int source, int destination) {
+        Edge[] highways = dataLayer.getData().getEdges();
+        Edge incidentRoad = null;
+
+        for (Edge edge : highways) {
+            boolean firstMatchCombination = edge.getVertexId1() == source && edge.getVertexId2() == destination;
+            boolean secondMatchCombination = edge.getVertexId1() == destination && edge.getVertexId2() == source;
+
+            if (firstMatchCombination || secondMatchCombination) {
+                incidentRoad = edge;
+                break;
+            }
         }
+
+        assert incidentRoad != null;
+        return incidentRoad;
     }
 
     private double getConditionMultiplier(String condition) {
         if (condition == null) {
             return 1.5;
         }
+
         switch (condition.toLowerCase()) {
             case "otimo":
                 return 1.0;
@@ -109,7 +120,4 @@ public class Graph {
         }
     }
 
-    public DataLayer getDataLayer() {
-        return dataLayer;
-    }
 }
