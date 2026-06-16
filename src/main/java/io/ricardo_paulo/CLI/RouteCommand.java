@@ -1,6 +1,7 @@
 package io.ricardo_paulo.CLI;
 
 import io.ricardo_paulo.Main;
+import io.ricardo_paulo.Service.RouteResult;
 import io.ricardo_paulo.enums.Algorithm;
 import io.ricardo_paulo.enums.RouteCriteria;
 import io.ricardo_paulo.CLI.util.InputNormalizer;
@@ -36,29 +37,71 @@ public class RouteCommand implements Runnable {
     @Override
     public void run () {
 
-        String noAccentOrigin = new InputNormalizer(origin).getNormalized();
-        String noAccentDestiny = new InputNormalizer(destiny).getNormalized();
-
-        if (!isValidInput(noAccentOrigin)) {
+        if (!isValidInput(origin)) {
             System.out.println("A origem passada por parâmetro é inválida!");
             return;
-        } else if (!isValidInput(noAccentDestiny)) {
+        } else if (!isValidInput(destiny)) {
             System.out.println("O destino passado por parâmetro é inválido!");
+            return;
+        }
+
+        if (!validInputTypes(origin, destiny)) {
+            System.out.println("Os parâmetros passados são inválidos! Utilize apenas IDs ou apenas nomes.");
             return;
         }
 
         System.out.printf("Calculando rota: %s -> %s\n", origin, destiny);
         System.out.printf("Considerando como prioridade: %s\n", routeCriteria);
 
-        // Main.graph.calculateBestRoute(noAccentOrigin, noAccentDestiny, algorithm, routeCriteria);
+        RouteResult routeResult;
+
+        if (isNumber(origin)) {
+
+            routeResult = Main.graph.calculateBestRoute(
+                    Integer.parseInt(origin),
+                    Integer.parseInt(destiny),
+                    algorithm,
+                    routeCriteria
+            );
+
+        } else {
+            String noAccentOrigin = new InputNormalizer(origin).getNormalized();
+            String noAccentDestiny = new InputNormalizer(destiny).getNormalized();
+
+            routeResult = Main.graph.calculateBestRoute(
+                    noAccentOrigin,
+                    noAccentDestiny,
+                    algorithm,
+                    routeCriteria
+            );
+        }
+
+        System.out.println(routeResult.routeExists());
 
     }
 
     private boolean isValidInput (String noAccentInput) {
-        boolean isNumber = noAccentInput.chars().allMatch(Character::isDigit);
-        boolean isText = noAccentInput.chars().allMatch(Character::isAlphabetic);
+        return isNumber(noAccentInput) || isText(noAccentInput);
+    }
 
-        return isNumber || isText;
+    private boolean validInputTypes(String origin, String destiny) {
+
+        boolean allId = isNumber(origin)
+                && isNumber(destiny);
+        boolean allText = isText(origin)
+                && isText(destiny);
+
+        // Comparação XOR (exclusive OR)
+        return allId ^ allText;
+
+    }
+
+    private boolean isNumber (String input) {
+        return input.chars().allMatch(Character::isDigit);
+    }
+
+    private boolean isText (String input) {
+        return input.chars().allMatch(Character::isAlphabetic);
     }
 
 }

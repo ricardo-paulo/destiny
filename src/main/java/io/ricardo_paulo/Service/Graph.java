@@ -96,7 +96,7 @@ public class Graph {
 
         return switch (criteria) {
             case SHORTEST_DISTANCE -> distance;
-            case FASTEST_TIME -> {
+            case FASTEST -> {
                 if (speed <= 0) {
                     yield Double.MAX_VALUE;
                 }

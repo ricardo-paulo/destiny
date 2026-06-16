@@ -3,6 +3,6 @@ package io.ricardo_paulo.enums;
 
 public enum RouteCriteria {
     SHORTEST_DISTANCE,
-    FASTEST_TIME,
+    FASTEST,
     BEST_QUALITY
 }
