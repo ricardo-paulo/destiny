@@ -150,7 +150,7 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
     - [x]  Presença de obras ou manutenções;
     - [x]  Limite de velocidade; e
     - [x]  Estado geral da rodovia.
-- [ ]  Transcrever todos os dados necessários para uma tabela no Google Planilhas.
+- [x]  Transcrever todos os dados necessários para uma tabela no Google Planilhas.
     - [x]  Tabela de Adjacência;
     - [x]  Tabela de Incidência;
     
@@ -159,7 +159,7 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
     - [x]  Nome e Id das vias;
     - [x]  Nomes e Ids dos vértices (1 e 2);
     - [x]  Condição Geral;
-    - [ ]  Distância;
+    - [x]  Distância;
     - [x]  Pavimentação;
     - [x]  Buracos;
     - [x]  Pedágios;
@@ -171,24 +171,25 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
     
     - [x]  Id;
     - [x]  Nome dos vértices.
-- [ ]  Transformar a tabela do Planilhas em um arquivo JSON utilizando o notebook específico do Google Colab.
-    - [ ]  Rodovias (arestas)
+- [x]  Transformar a tabela do Planilhas em um arquivo JSON utilizando o notebook específico do Google Colab.
+    - [x]  Rodovias (arestas)
     - [x]  Vértices
     - [x]  Tabela de Incidência
     - [x]  Tabela de Adjacência
 
 ## Camada de Dados
 
-- [ ]  Criar classe DataGetResult.
-    - [ ]  Criar atributos para armazenar os objetos Vertex, matrizes de incidência e matrizes de adjacência.
-- [ ]  Criar classe Data.
-    - [ ]  Fazer a classe retornar um objeto do tipo DataGetResult.
-- [ ]  Criar classe Vertex.
+- [x]  Criar classe DataGetResult.
+    - [x]  Criar atributos para armazenar os objetos Vertex, matrizes de incidência e matrizes de adjacência.
+- [x]  Criar classe Data.
+    - [x]  Fazer a classe retornar um objeto do tipo DataGetResult.
+- [x]  Criar classe Vertex.
 
 ## Camada de Serviço
 
-- [ ]  Criar classe Graph.
-    - [ ]  Fazer a classe retornar um array de Vertex (vértices) na ordem crescente para a rota a ser seguida pelo usuário.
+- [x]  Criar classe Graph.
+    - [x]  Fazer a classe retornar um array de Vertex (vértices) na ordem crescente para a rota a ser seguida pelo usuário.
+- [x]  Sobrecarregar o método calculateBestRoute para aceitar parâmetros de nomes de vértices, fazer o parsing dos nomes e executar o método em sua versão de IDs.
 
 ## CLI
 
@@ -199,7 +200,11 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
     - [x]  Criar método para retornar um separador para a próxima saída de dados.
     - [x]  Criar método para inserir avisos (se há buracos e se está em obra) na saída.
 - [ ]  Criar comando route.
-    - [ ]  Incluir tratamento de erro para o caso de parâmetros inválidos.
+    - [x]  Incluir a possibilidade do usuário informar o nome ou id da cidade como primeiro e segundo parâmetros.
+    - [ ]  Organizar a saída do comando para que a rota esteja na ordem correta. Pois a ordem dos nomes dos vértices retornados pelo grafo não estão necessariamente na direção de deslocamento do usuário.
+    - [ ]  Incluir avisos ao formatador de saída conforme estiver em cada objeto Edge.
+    - [ ]  Incluir tratamento de erro para o caso de parâmetros inválidos, como nomes de cidades inexistentes.
+    - [ ]  Adicionar saída para o caso de não existir uma rota.
 
 # Extras
 
@@ -207,9 +212,10 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
 - [ ]  Incluir as tarifas de pedágios para o índice de degradação (custo) para uso da via.
 - [ ]  Criar formas de inserir, atualizar ou deletar cidades e rodovias.
 
-# Bibliotecas
+# Dependências
 
-- Picocli (Java) - Utilizada para melhor estruturação e apresentação dos comandos. (Site oficial: [picocli - a mighty tiny command line interface](https://picocli.info/))
+- Picocli (Java) - Utilizada para melhor estruturação e apresentação dos comandos e resultados. (Site oficial: [picocli - a mighty tiny command line interface](https://picocli.info/))
+- Shadow (Java) - Utilizada para gerar o fat JAR (Disponível em: [GradleUp/shadow: Gradle plugin to create fat/uber JARs](https://github.com/GradleUp/shadow))
 
 # Referências e Fontes de Dados
 
