@@ -4,7 +4,7 @@ import io.ricardo_paulo.Main;
 import io.ricardo_paulo.Service.RouteResult;
 import io.ricardo_paulo.enums.Algorithm;
 import io.ricardo_paulo.enums.RouteCriteria;
-import io.ricardo_paulo.CLI.util.InputNormalizer;
+import io.ricardo_paulo.util.InputNormalizer;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 

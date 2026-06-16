@@ -29,6 +29,7 @@ import io.ricardo_paulo.Data.Edge;
 import io.ricardo_paulo.Data.Vertex;
 import io.ricardo_paulo.enums.Algorithm;
 import io.ricardo_paulo.enums.RouteCriteria;
+import io.ricardo_paulo.util.InputNormalizer;
 
 public class Graph {
 
@@ -64,11 +65,14 @@ public class Graph {
         Vertex resultDestination = null;
 
         for (Vertex vertex : vertices) {
-            if (vertex.getName().equalsIgnoreCase(sourceName)) {
+
+            String normVertexName = new InputNormalizer(vertex.getName()).getNormalized();
+
+            if (normVertexName.equalsIgnoreCase(sourceName)) {
                 resultSource = vertex;
             }
 
-            if (vertex.getName().equalsIgnoreCase(destinationName)) {
+            if (normVertexName.equalsIgnoreCase(destinationName)) {
                 resultDestination = vertex;
             }
         }

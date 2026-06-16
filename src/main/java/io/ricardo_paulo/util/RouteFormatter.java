@@ -1,4 +1,4 @@
-package io.ricardo_paulo.CLI.util;
+package io.ricardo_paulo.util;
 
 public class RouteFormatter {
 
