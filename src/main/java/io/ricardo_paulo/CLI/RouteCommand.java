@@ -105,7 +105,9 @@ public class RouteCommand implements Runnable {
 
         for (int i = 0; i < routeEdges.length; i++) {
 
-            RouteFormatter routeFormatter = getRouteFormatter(nameSets, i, routeEdges);
+            int estimatedTime = routeResult.getEstimatedTimes()[i];
+
+            RouteFormatter routeFormatter = getRouteFormatter(nameSets, i, routeEdges, estimatedTime);
             System.out.println(routeFormatter.getResult());
             if (i != routeEdges.length - 1) {
                 System.out.println(RouteFormatter.getNextSeparator());
@@ -115,11 +117,13 @@ public class RouteCommand implements Runnable {
 
     }
 
-    private static RouteFormatter getRouteFormatter(ArrayList<String[]> nameSets, int i, Edge[] routeEdges) {
+    private static RouteFormatter getRouteFormatter(ArrayList<String[]> nameSets, int i,
+                                                    Edge[] routeEdges, int estimatedTime) {
         RouteFormatter routeFormatter = new RouteFormatter(
                 nameSets.get(i)[0],
                 nameSets.get(i)[1],
                 routeEdges[i].getDistance(),
+                estimatedTime,
                 routeEdges[i].getTolls(),
                 routeEdges[i].getAvgPermittedSpeed(),
                 routeEdges[i].getName()

@@ -58,4 +58,15 @@ public class RouteResult {
         return !pathIds.isEmpty() && !(totalCost == -1) && criteriaUsed != null;
     }
 
+    public Integer[] getEstimatedTimes() {
+        Edge[] edges = getEdges();
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (Edge edge : edges) {
+            result.add((int) (edge.getDistance()/edge.getAvgPermittedSpeed() * 60));
+        }
+
+        return result.toArray(new Integer[0]);
+    }
+
 }
