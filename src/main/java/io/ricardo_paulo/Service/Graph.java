@@ -34,6 +34,28 @@ import io.ricardo_paulo.util.InputNormalizer;
 public class Graph {
 
     private final Data dataLayer = new Data();
+    private final int[][] adjacencyMatrix;
+    private final Edge[][] edgeMatrix;
+    private final Vertex[] vertices;
+    private final int numVertices;
+
+    public Graph() {
+        // Carrega a camada de dados UMA ÚNICA VEZ ao criar o mapa
+        Data dataLayer = new Data();
+        var data = dataLayer.getData();
+
+        this.vertices = data.getVertices();
+        this.numVertices = this.vertices.length;
+        this.adjacencyMatrix = data.getAdjacencyMatrix();
+
+        this.edgeMatrix = new Edge[numVertices][numVertices];
+        for (Edge edge : data.getEdges()) {
+            int v1 = edge.getVertexId1();
+            int v2 = edge.getVertexId2();
+            this.edgeMatrix[v1][v2] = edge;
+            this.edgeMatrix[v2][v1] = edge; // Se o grafo for não-direcionado
+        }
+    }
 
     public RouteResult calculateBestRoute(
             int sourceId,
@@ -41,7 +63,7 @@ public class Graph {
             Algorithm algorithm,
             RouteCriteria criteria) {
 
-        int numVertices = dataLayer.getData().getVertices().length;
+        int numVertices = this.vertices.length;
 
         if (sourceId < 0 || sourceId > 89 || destinationId < 0 || destinationId > 89)
             return new RouteResult();
@@ -60,7 +82,7 @@ public class Graph {
             Algorithm algorithm,
             RouteCriteria criteria
     ) {
-        Vertex[] vertices = dataLayer.getData().getVertices();
+        Vertex[] vertices = this.vertices;
         Vertex resultSource = null;
         Vertex resultDestination = null;
 
@@ -85,31 +107,20 @@ public class Graph {
     }
 
     public double getEdgeWeight(int source, int destination, RouteCriteria criteria) {
-
-        int vertexAdjacency = dataLayer.getData().getAdjacencyMatrix()[source][destination];
-
-        if (vertexAdjacency == 0) {
+        if (adjacencyMatrix[source][destination] == 0) {
             return Double.MAX_VALUE;
         }
 
-        Edge incidentRoad = getIncidentEdge(source, destination);
+        Edge incidentRoad = edgeMatrix[source][destination];
+        if (incidentRoad == null) return Double.MAX_VALUE;
 
         double distance = incidentRoad.getDistance();
         int speed = incidentRoad.getAvgPermittedSpeed();
 
         return switch (criteria) {
             case SHORTEST_DISTANCE -> distance;
-            case FASTEST -> {
-                if (speed <= 0) {
-                    yield Double.MAX_VALUE;
-                }
-                yield distance / speed;
-            }
-            case BEST_QUALITY -> {
-                double qualityFactor =
-                        getConditionMultiplier(incidentRoad.getGeneralCondition());
-                yield distance * qualityFactor;
-            }
+            case FASTEST -> (speed <= 0) ? Double.MAX_VALUE : (distance / speed);
+            case BEST_QUALITY -> distance * getConditionMultiplier(incidentRoad.getGeneralCondition());
         };
     }
 
