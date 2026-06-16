@@ -1,12 +1,16 @@
 package io.ricardo_paulo.CLI;
 
+import io.ricardo_paulo.Data.Edge;
+import io.ricardo_paulo.Data.Vertex;
 import io.ricardo_paulo.Main;
 import io.ricardo_paulo.Service.RouteResult;
 import io.ricardo_paulo.enums.Algorithm;
 import io.ricardo_paulo.enums.RouteCriteria;
 import io.ricardo_paulo.util.InputNormalizer;
+import io.ricardo_paulo.util.RouteFormatter;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
+import java.util.ArrayList;
 
 @Command(
         name = "route",
@@ -54,6 +58,7 @@ public class RouteCommand implements Runnable {
         System.out.printf("Considerando como prioridade: %s\n", routeCriteria);
 
         RouteResult routeResult;
+        boolean inputIsId;
 
         if (isNumber(origin)) {
 
@@ -63,6 +68,8 @@ public class RouteCommand implements Runnable {
                     algorithm,
                     routeCriteria
             );
+
+            inputIsId = true;
 
         } else {
             String noAccentOrigin = new InputNormalizer(origin).getNormalized();
@@ -74,9 +81,103 @@ public class RouteCommand implements Runnable {
                     algorithm,
                     routeCriteria
             );
+
+            inputIsId = false;
+
         }
 
-        System.out.println(routeResult.routeExists());
+        Edge[] routeEdges = routeResult.getEdges();
+        ArrayList<String[]> nameSets;
+
+        if (inputIsId) {
+            nameSets = getNameSets(
+                    routeEdges,
+                    Main.graph.getVertexById(Integer.parseInt(origin)));
+        } else {
+            nameSets = getNameSets(
+                    routeEdges,
+                    Main.graph.getVertexByName(origin)
+            );
+        }
+
+        for (int i = 0; i < routeEdges.length; i++) {
+
+            RouteFormatter routeFormatter = getRouteFormatter(nameSets, i, routeEdges);
+            System.out.println(routeFormatter.getResult());
+            if (i != routeEdges.length - 1) {
+                System.out.println(RouteFormatter.getNextSeparator());
+            }
+
+        }
+
+    }
+
+    private static RouteFormatter getRouteFormatter(ArrayList<String[]> nameSets, int i, Edge[] routeEdges) {
+        RouteFormatter routeFormatter = new RouteFormatter(
+                nameSets.get(i)[0],
+                nameSets.get(i)[1],
+                routeEdges[i].getDistance(),
+                routeEdges[i].getTolls(),
+                routeEdges[i].getAvgPermittedSpeed(),
+                routeEdges[i].getName()
+        );
+
+        if (routeEdges[i].isInWorks())
+            routeFormatter.setInWorksWarn(true);
+
+        if (!routeEdges[i].getRoles().equals("insistente/irrelevante"))
+            routeFormatter.setHolesWarn(true);
+        return routeFormatter;
+    }
+
+    private ArrayList<String[]> getNameSets (Edge[] routeEdges, Vertex inputOrigin) {
+
+        ArrayList<String[]> nameSets = new ArrayList<>();
+        int predecessor = -1;
+
+        for (Edge currentEdge : routeEdges) {
+
+            String[] set = new String[2];
+
+            if (predecessor == -1) {
+
+                if (currentEdge.getVertexId1() == inputOrigin.getId()) {
+
+                    set[0] = new InputNormalizer(inputOrigin.getName()).getNormalized();
+                    set[1] = new InputNormalizer(currentEdge.getVertexName2()).getNormalized();
+                    predecessor = currentEdge.getVertexId2();
+
+                } else if (currentEdge.getVertexId2() == inputOrigin.getId()) {
+
+                    set[0] = new InputNormalizer(inputOrigin.getName()).getNormalized();
+                    set[1] = new InputNormalizer(currentEdge.getVertexName1()).getNormalized();
+                    predecessor = currentEdge.getVertexId1();
+
+                }
+
+            } else {
+
+                if (predecessor == currentEdge.getVertexId1()) {
+
+                    set[0] = new InputNormalizer(currentEdge.getVertexName1()).getNormalized();
+                    set[1] = new InputNormalizer(currentEdge.getVertexName2()).getNormalized();
+                    predecessor = currentEdge.getVertexId2();
+
+                } else {
+
+                    set[0] = new InputNormalizer(currentEdge.getVertexName2()).getNormalized();
+                    set[1] = new InputNormalizer(currentEdge.getVertexName1()).getNormalized();
+                    predecessor = currentEdge.getVertexId1();
+
+                }
+
+            }
+
+            nameSets.add(set);
+
+        }
+
+        return nameSets;
 
     }
 

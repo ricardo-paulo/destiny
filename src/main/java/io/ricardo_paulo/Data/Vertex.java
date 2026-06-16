@@ -10,6 +10,11 @@ public class Vertex {
         this.NAME = name;
     }
 
+    public Vertex() {
+        this.ID = -1;
+        this.NAME = "";
+    }
+
     public int getId() {
         return ID;
     }

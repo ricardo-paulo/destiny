@@ -9,13 +9,13 @@ public class RouteFormatter {
 
     private final String from;
     private final String to;
-    private String warnings;
-    private final float distance;
+    private String warnings = "";
+    private final double distance;
     private final int tolls;
     private final int maxVel;
     private final String highway;
 
-    public RouteFormatter(String from, String to, float distance, int tolls, int maxVel, String highway) {
+    public RouteFormatter(String from, String to, double distance, int tolls, int maxVel, String highway) {
         this.from = from;
         this.to = to;
         this.distance = distance;

@@ -131,6 +131,29 @@ public class Graph {
         return incidentRoad;
     }
 
+    public Vertex getVertexByName(String rawVertexName) {
+        String normalizedVertexName = new InputNormalizer(rawVertexName).getNormalized();
+        Vertex[] vertices = dataLayer.getData().getVertices();
+
+        for (Vertex v : vertices) {
+            if (v.getName().equalsIgnoreCase(normalizedVertexName))
+                return v;
+        }
+
+        return new Vertex();
+    }
+
+    public Vertex getVertexById(int vertexId) {
+        Vertex[] vertices = dataLayer.getData().getVertices();
+
+        for (Vertex v : vertices) {
+            if (v.getId() == vertexId)
+                return v;
+        }
+
+        return new Vertex();
+    }
+
     private double getConditionMultiplier(String condition) {
         if (condition == null) {
             return 1.5;
