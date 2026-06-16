@@ -7,26 +7,21 @@ public class RouteFormatter {
                                          ▼
             """;
 
-    private String from;
-    private String to;
-    // TODO Incluir os avisos de acordo com o que receber do Grafo.
+    private final String from;
+    private final String to;
     private String warnings;
-    private float distance;
-    private int tolls;
-    private int maxVel;
-    private String highway;
+    private final float distance;
+    private final int tolls;
+    private final int maxVel;
+    private final String highway;
 
-    public RouteFormatter () {
-
-        // Dados de teste. Substituir por um objeto real passado por parâmetro.
-        from = "Gurupi";
-        to = "Cariri do Tocantins";
-        warnings = "";
-        distance = 22.4f;
-        tolls = 0;
-        maxVel = 80;
-        highway = "BR-153";
-
+    public RouteFormatter(String from, String to, float distance, int tolls, int maxVel, String highway) {
+        this.from = from;
+        this.to = to;
+        this.distance = distance;
+        this.tolls = tolls;
+        this.maxVel = maxVel;
+        this.highway = highway;
     }
 
     public static String getNextSeparator () {

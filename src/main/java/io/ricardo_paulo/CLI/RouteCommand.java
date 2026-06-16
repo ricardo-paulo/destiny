@@ -37,10 +37,10 @@ public class RouteCommand implements Runnable {
     @Override
     public void run () {
 
-        if (!isValidInput(origin)) {
+        if (isInvalidInput(origin)) {
             System.out.println("A origem passada por parâmetro é inválida!");
             return;
-        } else if (!isValidInput(destiny)) {
+        } else if (isInvalidInput(destiny)) {
             System.out.println("O destino passado por parâmetro é inválido!");
             return;
         }
@@ -80,8 +80,8 @@ public class RouteCommand implements Runnable {
 
     }
 
-    private boolean isValidInput (String noAccentInput) {
-        return isNumber(noAccentInput) || isText(noAccentInput);
+    private boolean isInvalidInput(String noAccentInput) {
+        return !(isNumber(noAccentInput) || isText(noAccentInput));
     }
 
     private boolean validInputTypes(String origin, String destiny) {

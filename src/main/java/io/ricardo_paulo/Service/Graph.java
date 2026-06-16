@@ -34,7 +34,6 @@ public class Graph {
 
     private final Data dataLayer = new Data();
 
-    // TODO Implementar forma de converter a entrada dos parâmetros em caso de receber strings com os nomes das cidades.
     public RouteResult calculateBestRoute(
             int sourceId,
             int destinationId,
