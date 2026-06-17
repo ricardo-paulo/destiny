@@ -11,7 +11,6 @@ import io.ricardo_paulo.util.RouteFormatter;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @Command(
         name = "route",
@@ -206,11 +205,11 @@ public class RouteCommand implements Runnable {
     }
 
     private boolean isNumber (String input) {
-        return input.chars().allMatch(Character::isDigit);
+        return input.chars().noneMatch(Character::isAlphabetic);
     }
 
     private boolean isText (String input) {
-        return input.chars().allMatch(Character::isAlphabetic);
+        return input.chars().noneMatch(Character::isDigit);
     }
 
 }

@@ -31,6 +31,11 @@ public class Main {
             }
 
             String[] options = rawInput.split("\\s+(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+            for (int i = 0; i < options.length; i++) {
+                options[i] = options[i].replace("\"", "");
+            }
+
             cmd.execute(options);
 
         }
