@@ -175,6 +175,14 @@ public class Graph {
         return new Vertex();
     }
 
+    public Vertex[] getVertices() {
+        return dataLayer.getData().getVertices();
+    }
+
+    public Edge[] getEdges() {
+        return dataLayer.getData().getEdges();
+    }
+
     private double getConditionMultiplier(String condition) {
         return switch (condition.toLowerCase()) {
 
@@ -224,7 +232,6 @@ public class Graph {
 
         };
     }
-
 
 }
 // Não tem um método para demais, pois são numericos já.

@@ -2,7 +2,7 @@ package io.ricardo_paulo.util;
 
 public class RouteFormatter {
 
-    private static final String nextSeparator = """
+    private static final String NEXT_SEPARATOR = """
                                          │
                                          ▼
             """;
@@ -27,7 +27,7 @@ public class RouteFormatter {
     }
 
     public static String getNextSeparator () {
-        return nextSeparator;
+        return NEXT_SEPARATOR;
     }
 
     public void setInWorksWarn (boolean state) {

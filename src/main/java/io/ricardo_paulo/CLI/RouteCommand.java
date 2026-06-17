@@ -15,7 +15,7 @@ import java.util.ArrayList;
 @Command(
         name = "route",
         mixinStandardHelpOptions = true,
-        version = "route 1.2",
+        version = "route 1.3",
         description = "Traça rotas com base em um grafo de rodovias e cidades."
 )
 public class RouteCommand implements Runnable {

@@ -9,7 +9,8 @@ import picocli.CommandLine.Command;
         subcommands = {
                 RouteCommand.class,
                 HelpCommand.class,
-                ClearCommand.class
+                ClearCommand.class,
+                ListCommand.class
         }
 )
 public class CommandsHandler implements Runnable {
