@@ -118,9 +118,18 @@ public class Graph {
         int speed = incidentRoad.getAvgPermittedSpeed();
 
         return switch (criteria) {
-            case SHORTEST_DISTANCE -> distance;
-            case FASTEST -> (speed <= 0) ? Double.MAX_VALUE : (distance / speed);
-            case BEST_QUALITY -> distance * getConditionMultiplier(incidentRoad.getGeneralCondition());
+            case SHORTEST_DISTANCE ->
+                    distance;
+            case FASTEST ->
+                    (speed <= 0) ? Double.MAX_VALUE : (distance / speed)
+                            * getPavingMultiplier(incidentRoad.getPaving())
+                            * getHolesMultiplier(incidentRoad.getRoles())
+                            * (1 + (incidentRoad.getTolls() * 0.2))
+                            * (1 + (incidentRoad.getPrfPosts() * 0.1))
+                            * (incidentRoad.isInWorks() ? 1.3 : 1.0);
+            case BEST_QUALITY ->
+                    distance * getConditionMultiplier(incidentRoad.getGeneralCondition())
+                            * getHolesMultiplier(incidentRoad.getRoles());
         };
     }
 
@@ -166,26 +175,55 @@ public class Graph {
     }
 
     private double getConditionMultiplier(String condition) {
-        if (condition == null) {
-            return 1.5;
-        }
+        return switch (condition.toLowerCase()) {
 
-        switch (condition.toLowerCase()) {
-            case "otimo":
-                return 1.0;
-            case "bom":
-                return 1.2;
-            case "regular":
-                return 1.5;
-            case "ruim":
-                return 2.0;
-            case "pessimo":
-                return 3.0;
-            case "nao_pesquisado":
-                return 1.5;
-            default:
-                return 1.5;
-        }
+            case "otimo" -> 0.1;
+
+            case "bom" -> 0.2;
+
+            case "regular" -> 0.6;
+
+            case "ruim" -> 1.1;
+
+            case "pessimo" -> 2.0;
+
+            case "nao_pavimentado" -> 3.5;
+
+            default -> 1.0;
+
+        };
+    }
+    private double getPavingMultiplier(String paving) {
+        return switch (paving.toLowerCase()) {
+
+            case "duplicada" -> 0.1;
+
+            case "pavimentada" -> 0.2;
+
+            case "implantada" -> 0.8;
+
+            case "leito natural" -> 1.6;
+
+            default -> 1.0;
+
+        };
+    }
+    private double getHolesMultiplier(String holes) {
+        return switch (holes.toLowerCase()) {
+
+            case "alta" -> 2.0;
+
+            case "media" -> 1.2;
+
+            case "baixa" -> 0.8;
+
+            case "inexistente/irrelevante" -> 0.1;
+
+            default -> 1.0;
+
+        };
     }
 
+
 }
+// Não tem um método para demais, pois são numericos já.
