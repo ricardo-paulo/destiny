@@ -13,7 +13,6 @@ class DijkstraService {
         this.numVertices = numVertices;
     }
 
-    // Método onde encontra a melhor rota com base no critério escolhido
     public RouteResult run(int source, int destination, RouteCriteria criteria) {
         double[] distances = new double[numVertices];
         int[] predecessor = new int[numVertices];

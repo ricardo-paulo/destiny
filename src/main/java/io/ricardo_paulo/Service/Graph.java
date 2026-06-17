@@ -1,29 +1,5 @@
 package io.ricardo_paulo.Service;
 
-/*
- * Classe responsável por intermediar o cálculo de rotas.
- *
- * Dependências pendentes:
- * - Camada Data (ainda não implementada/integrada).
- * - DijkstraService.
- * - BellmanFordService.
- *
- * Integração futura:
- * 1. Receber acesso aos vértices e arestas da camada Data.
- * 2. Definir como obter o peso das rodovias.
- * 3. Integrar os algoritmos de roteamento.
- */
-
-// essa classe é básicamente o mapa - tenso
-// não calcula Dij e bell
-// o "dataLayer" é apenas os dados carregados do json
-// Método calculateBestRoute ele recebe os "pesos"
-// ele meio que fala: Encontrar a rota da cidade 1 para a cidade 8
-//usando Dijkstra
-//considerando o menor tempo.
-// o método EdgeWeight é o mais importante:
-// quando ele executa o Dij e o BEll eles precisam saber qual o peso
-
 import io.ricardo_paulo.Data.Data;
 import io.ricardo_paulo.Data.Edge;
 import io.ricardo_paulo.Data.Vertex;
@@ -234,4 +210,3 @@ public class Graph {
     }
 
 }
-// Não tem um método para demais, pois são numericos já.
