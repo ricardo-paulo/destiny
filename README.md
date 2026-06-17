@@ -36,6 +36,32 @@ A aplicação é composta por três camadas: CLI, Camada de Serviço e Camada de
 
 Não serão necessárias realizar inserções ou qualquer tipo de modificações, pois as informações serão estáticas, ao menos a princípio.
 
+# Modo de Utilização
+
+## Pacote JAR
+
+Para utilizar o pacote JAR, basta baixar a versão mais recente e executar o seguinte comando no terminal, no mesmo diretório do arquivo *.jar*:
+
+```bash
+java -jar *nome_do_pacote*.jar
+```
+
+---
+
+## Código Fonte
+
+Para utilização da aplicação diretamente com o código fonte, é necessário fazer o clone do repositório, importar as dependências utilizando Gradle e rodar o seguinte comando no terminal, dentro da raiz do projeto:
+
+```bash
+.\gradlew run -q --console=plain
+```
+
+---
+
+Para encerrar a execução basta rodar o comando *exit* no terminal.
+
+Para listagem de comandos, rode o comando *help*.
+
 # Definições
 
 ## Fontes de dados
@@ -177,6 +203,8 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
     - [x]  Tabela de Incidência
     - [x]  Tabela de Adjacência
 
+---
+
 ## Camada de Dados
 
 - [x]  Criar classe DataGetResult.
@@ -185,11 +213,15 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
     - [x]  Fazer a classe retornar um objeto do tipo DataGetResult.
 - [x]  Criar classe Vertex.
 
+---
+
 ## Camada de Serviço
 
 - [x]  Criar classe Graph.
     - [x]  Fazer a classe retornar um array de Vertex (vértices) na ordem crescente para a rota a ser seguida pelo usuário.
 - [x]  Sobrecarregar o método calculateBestRoute para aceitar parâmetros de nomes de vértices, fazer o parsing dos nomes e executar o método em sua versão de IDs.
+
+---
 
 ## CLI
 
