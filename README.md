@@ -199,16 +199,23 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
     - [x]  Criar método para formatar e retornar uma saída de dados de acordo com o modelo.
     - [x]  Criar método para retornar um separador para a próxima saída de dados.
     - [x]  Criar método para inserir avisos (se há buracos e se está em obra) na saída.
-- [ ]  Criar comando route.
+- [x]  Criar comando route.
     - [x]  Incluir a possibilidade do usuário informar o nome ou id da cidade como primeiro e segundo parâmetros.
-    - [ ]  Organizar a saída do comando para que a rota esteja na ordem correta. Pois a ordem dos nomes dos vértices retornados pelo grafo não estão necessariamente na direção de deslocamento do usuário.
-    - [ ]  Incluir avisos ao formatador de saída conforme estiver em cada objeto Edge.
-    - [ ]  Incluir tratamento de erro para o caso de parâmetros inválidos, como nomes de cidades inexistentes.
-    - [ ]  Adicionar saída para o caso de não existir uma rota.
+    - [x]  Organizar a saída do comando para que a rota esteja na ordem correta. Pois a ordem dos nomes dos vértices retornados pelo grafo não estão necessariamente na direção de deslocamento do usuário.
+    - [x]  Incluir avisos ao formatador de saída conforme estiver em cada objeto Edge.
+    - [x]  Incluir tratamento de erro para o caso de parâmetros inválidos, como nomes de cidades inexistentes.
+        - [x]  Adicionar saída para o caso de não existir uma rota.
+    - [x]  Informar ao usuário o tempo de viajem estimado.
+- [x]  Resolver problema de rota de Dueré para Alvorada.
+- [x]  Resolver problema do peso em relação ao pedágio, da rota mais rápida.
+- [x]  Resolver problema de entrada, na qual não é possível inserir nomes de cidades com espaços.
 
 # Extras
 
-- [ ]  Criar comando para listar: rodovias, cidades, tabela de incidência e tabela de adjacência.
+- [ ]  Criar comando para listar: rodovias e cidades.
+    - [ ]  Rodovias
+    - [ ]  Cidades
+- [ ]  Fazer resumo da rota ao final.
 - [ ]  Incluir as tarifas de pedágios para o índice de degradação (custo) para uso da via.
 - [ ]  Criar formas de inserir, atualizar ou deletar cidades e rodovias.
 
