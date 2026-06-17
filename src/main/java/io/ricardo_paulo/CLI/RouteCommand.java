@@ -11,6 +11,7 @@ import io.ricardo_paulo.util.RouteFormatter;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Command(
         name = "route",

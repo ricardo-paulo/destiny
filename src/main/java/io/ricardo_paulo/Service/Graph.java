@@ -156,7 +156,8 @@ public class Graph {
         Vertex[] vertices = dataLayer.getData().getVertices();
 
         for (Vertex v : vertices) {
-            if (v.getName().equalsIgnoreCase(normalizedVertexName))
+            String normalizedV = new InputNormalizer(v.getName()).getNormalized();
+            if (normalizedV.equalsIgnoreCase(normalizedVertexName))
                 return v;
         }
 
