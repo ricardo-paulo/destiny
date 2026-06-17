@@ -244,12 +244,10 @@ Manter uma nomenclatura única para o caso acima causaria duplo entendimento at�
 
 # Extras
 
-- [ ]  Criar comando para listar: rodovias e cidades.
-    - [ ]  Rodovias
-    - [ ]  Cidades
-- [ ]  Fazer resumo da rota ao final.
-- [ ]  Incluir as tarifas de pedágios para o índice de degradação (custo) para uso da via.
-- [ ]  Criar formas de inserir, atualizar ou deletar cidades e rodovias.
+- [x]  Criar comando para listar: rodovias e cidades.
+    - [x]  Rodovias
+    - [x]  Cidades
+    - [x]  Vértices
 
 # Dependências
 
